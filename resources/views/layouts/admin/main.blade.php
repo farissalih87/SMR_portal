@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
-  <title>@yield('title')</title>
+  <title>SMR | Admin</title>
 
   <!-- Favicons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -30,6 +30,8 @@
   <!-- Your custom styles -->
   <link href="{{asset('assets/admin/css/custom.css')}}" rel="stylesheet">
 
+    @yield('css')
+
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
@@ -42,12 +44,41 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{route('admin.home')}}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
-		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Languages">
+              <a class="nav-link nav-link-collapse" data-toggle="collapse"  href="#collapseLanguages" data-parent="#Languages" aria-expanded="false" >
+                  <i class="fa fa-fw fa-language"></i>
+                  <span class="nav-link-text">Languages <span class="badge badge-pill badge-primary">{{App\Models\Language::count()}}</span></span>
+              </a>
+              <ul class="sidenav-second-level collapse " id="collapseLanguages" style="">
+                  <li>
+                      <a href="{{route('admin.languages')}}"><i class="fa fa-fw fa-eye"></i> View all</a>
+                  </li>
+                  <li>
+                      <a href="{{route('admin.new_language')}}"><i class="fa fa-fw fa-plus"></i> Add New</a>
+                  </li>
+              </ul>
+          </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Categories">
+              <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseCategories" data-parent="#Categories" aria-expanded="false">
+                  <i class="fa fa-fw fa-folder"></i>
+                  <span class="nav-link-text">Categories <span class="badge badge-pill badge-primary">{{App\Models\Category::where('trans_lang',getDefault_lang())->count()}}</span></span>
+              </a>
+              <ul class="sidenav-second-level collapse " id="collapseCategories" style="">
+                  <li>
+                      </i> <a href="{{route('admin.categories')}}">View all</a>
+                  </li>
+                  <li>
+                      <a href="{{route('admin.new_category')}}">Add New</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
           <a class="nav-link" href="messages.html">
             <i class="fa fa-fw fa-envelope-open"></i>
             <span class="nav-link-text">Messages</span>
@@ -270,6 +301,8 @@
     <script src="{{asset('assets/admin/js/admin.js')}}"></script>
 	<!-- Custom scripts for this page-->
     <script src="{{asset('assets/admin/js/admin-charts.js')}}"></script>
+
+@yield('js')
 
 </body>
 </html>
