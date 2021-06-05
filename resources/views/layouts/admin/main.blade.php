@@ -1,3 +1,5 @@
+{{session()->put('locale', 'en')}}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +65,7 @@
                   </li>
               </ul>
           </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Categories">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Categories">
               <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseCategories" data-parent="#Categories" aria-expanded="false">
                   <i class="fa fa-fw fa-folder"></i>
                   <span class="nav-link-text">Categories <span class="badge badge-pill badge-primary">{{App\Models\Category::where('trans_lang',getDefault_lang())->count()}}</span></span>
@@ -77,7 +79,20 @@
                   </li>
               </ul>
           </li>
-
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Brands">
+              <a class="nav-link nav-link-collapse" data-toggle="collapse" href="#collapseBrands" data-parent="#Brands" aria-expanded="false">
+                  <i class="fa fa-fw fa-folder"></i>
+                  <span class="nav-link-text">Brands <span class="badge badge-pill badge-primary">{{App\Models\Brand::where('trans_lang',getDefault_lang())->count()}}</span></span>
+              </a>
+              <ul class="sidenav-second-level collapse " id="collapseBrands" style="">
+                  <li>
+                      </i> <a href="{{route('admin.brands')}}">View all</a>
+                  </li>
+                  <li>
+                      <a href="{{route('admin.new_brand')}}">Add New</a>
+                  </li>
+              </ul>
+          </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
           <a class="nav-link" href="messages.html">
             <i class="fa fa-fw fa-envelope-open"></i>

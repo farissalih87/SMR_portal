@@ -47,6 +47,12 @@ return [
             'url' => env('APP_URL').'/',
             'visibility' => 'public',
         ],
+        'brands' => [
+            'driver' => 'local',
+            'root' => storage_path('images/brands'),
+            'url' => env('APP_URL').'/',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

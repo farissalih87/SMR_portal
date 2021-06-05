@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/set-locale/{locale}', function ($locale) {
+    App::setLocale($locale);
+
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('locale.setting');
+
 Route::get('/', function () {
+
     return view('site_home');
 });
+
+Route::get('category/{id}','Admin\CategoriesController@companies_list')->name('cat.companies');
+Route::get('brand/{id}','Admin\BrandsController@companies_list')->name('brand.companies');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,4 +36,6 @@ Route::get('/dashboard', function () {
 
 
 require __DIR__.'/auth.php';
+
 require __DIR__.'/admin.php';
+

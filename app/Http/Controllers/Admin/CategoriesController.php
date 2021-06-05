@@ -134,4 +134,12 @@ catch (\Exception $ex){
             return redirect()->route('admin.categories')->with(['error' => 'Error ..... Please try again ']);
         }
         }
+
+        public function companies_list($id){
+
+            $category = Category::with('categories')->find($id);
+
+            return view('cat_companies_list',compact('category'));
+
+        }
 }

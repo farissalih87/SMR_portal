@@ -37,6 +37,17 @@ Route::prefix('admin')->group(function () {
         });
         /////////////////// Categories Routes
 
+        /////////////////// Brands Routes
+        Route::group(['prefix'=>'brands'],function (){
+            Route::get('/','Admin\BrandsController@index')->name('admin.brands');
+            Route::get('/create','Admin\BrandsController@create')->name('admin.new_brand');
+            Route::post('/store','Admin\BrandsController@store')->name('admin.store_brand');
+            Route::get('/edit/{id}','Admin\BrandsController@edit')->name('admin.edit_brand');
+            Route::post('/update/{id}','Admin\BrandsController@update')->name('admin.update_brand');
+            Route::get('/delete/{id}','Admin\BrandsController@destroy')->name('admin.delete_brand');
+        });
+        /////////////////// Brands Routes
+
     });
 });
 
