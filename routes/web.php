@@ -26,6 +26,11 @@ Route::get('/', function () {
     return view('site_home');
 });
 
+Route::get('/site_login', function () {
+
+    return view('site_login');
+});
+
 Route::get('category/{id}','Admin\CategoriesController@companies_list')->name('cat.companies');
 Route::get('brand/{id}','Admin\BrandsController@companies_list')->name('brand.companies');
 

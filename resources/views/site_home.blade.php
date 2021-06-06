@@ -104,7 +104,7 @@
                         <div class="box_1">
                             <h3>{!! __('messages.take_the_opportunity') !!}</h3>
                             <p>{!! __('messages.call_section_txt') !!}</p>
-                            <a href="#0" class="btn_1 rounded">{{__('messages.join_now')}}</a>
+                            <a href="#sign-in-dialog" id="sign-in2" class="btn_1 rounded login">{{__('messages.join_now')}}</a>
                         </div>
                     </div>
                 </div>

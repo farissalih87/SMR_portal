@@ -21,6 +21,15 @@ return [
     'take_the_opportunity' => 'Take the opportunity',
     'call_section_txt' => 'Join ServeMyRide The Automotive Specialized Business Directory, add your company (organization) profile in the list and promote your business with us. Fill your profile, add all important information and navigate people straight into your business..',
     'join_now' => 'Join Now !',
+    'sign_in' => 'Sign In',
+    'login_with_facebook' => 'Login with Facebook',
+    'login_with_google' => 'Login with Google',
+    'or' => 'Or',
+    'email' => 'Email',
+    'remember_me' => 'Remember me',
+    'forget_password' => 'Forget Password?',
+    'dont_have_an_account' => 'Don’t have an account?',
+    'sign_up' => 'Sign up',
 
 
 

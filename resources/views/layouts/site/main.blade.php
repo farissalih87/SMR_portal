@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@yield('title')</title>
 
     <!-- Favicons-->
@@ -162,36 +164,39 @@
 	<!-- Sign In Popup -->
 	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
 		<div class="small-dialog-header">
-			<h3>Sign In</h3>
+			<h3>{{ __('messages.sign_in') }}</h3>
 		</div>
-		<form>
+
 			<div class="sign-in-wrapper">
-				<a href="#0" class="social_bt facebook">Login with Facebook</a>
-				<a href="#0" class="social_bt google">Login with Google</a>
-				<div class="divider"><span>Or</span></div>
+                <form method="post" action="{{ route('login') }}">
+                    @csrf
+				<a href="#0" class="social_bt facebook">{{ __('messages.login_with_facebook') }}</a>
+				<a href="#0" class="social_bt google">{{ __('messages.login_with_google') }}</a>
+				<div class="divider"><span>{{ __('messages.or') }}</span></div>
 				<div class="form-group">
-					<label>Email</label>
-					<input type="email" class="form-control" name="email" id="email">
+					<label>{{ __('messages.email') }}</label>
+					<input  class="form-control" type="email" name="email" :value="old('email')" required autofocus />
 					<i class="icon_mail_alt"></i>
 				</div>
 				<div class="form-group">
-					<label>Password</label>
-					<input type="password" class="form-control" name="password" id="password" value="">
+					<label>{{ __('messages.password') }}</label>
+					<input class="form-control" id="password" type="password" name="password" required autocomplete="current-password" />
 					<i class="icon_lock_alt"></i>
 				</div>
 				<div class="clearfix add_bottom_15">
 					<div class="checkboxes float-left">
-						<label class="container_check">Remember me
-						  <input type="checkbox">
+						<label class="container_check">{{ __('messages.remember_me') }}
+						  <input type="checkbox" id="remember_me" name="remember">
 						  <span class="checkmark"></span>
 						</label>
 					</div>
-					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
+					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">{{ __('messages.forget_password') }}</a></div>
 				</div>
-				<div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
+				<div class="text-center"><input type="submit" value="{{ __('messages.sign_in') }}" class="btn_1 full-width"></div>
 				<div class="text-center">
-					Don’t have an account? <a href="register.html">Sign up</a>
+					{{ __('messages.dont_have_an_account') }} <a href="{{ route('register') }}">{{ __('messages.sign_up') }}</a>
 				</div>
+                </form>
 				<div id="forgot_pw">
 					<div class="form-group">
 						<label>Please confirm login email below</label>
@@ -202,10 +207,61 @@
 					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
 				</div>
 			</div>
-		</form>
+
 		<!--form -->
 	</div>
 	<!-- /Sign In Popup -->
+
+    <!-- Sign In2 Popup -->
+	<div id="sign-in2-dialog" class="zoom-anim-dialog mfp-hide">
+		<div class="small-dialog-header">
+			<h3>{{ __('messages.sign_in') }}</h3>
+		</div>
+
+			<div class="sign-in-wrapper">
+                <form method="post" action="{{ route('login') }}">
+                    @csrf
+				<a href="#0" class="social_bt facebook">{{ __('messages.login_with_facebook') }}</a>
+				<a href="#0" class="social_bt google">{{ __('messages.login_with_google') }}</a>
+				<div class="divider"><span>{{ __('messages.or') }}</span></div>
+				<div class="form-group">
+					<label>{{ __('messages.email') }}</label>
+					<input  class="form-control" type="email" name="email" :value="old('email')" required autofocus />
+					<i class="icon_mail_alt"></i>
+				</div>
+				<div class="form-group">
+					<label>{{ __('messages.password') }}</label>
+					<input class="form-control" id="password" type="password" name="password" required autocomplete="current-password" />
+					<i class="icon_lock_alt"></i>
+				</div>
+				<div class="clearfix add_bottom_15">
+					<div class="checkboxes float-left">
+						<label class="container_check">{{ __('messages.remember_me') }}
+						  <input type="checkbox" id="remember_me" name="remember">
+						  <span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="float-right mt-1"><a id="forgot" href="javascript:void(0);">{{ __('messages.forget_password') }}</a></div>
+				</div>
+				<div class="text-center"><input type="submit" value="{{ __('messages.sign_in') }}" class="btn_1 full-width"></div>
+				<div class="text-center">
+					{{ __('messages.dont_have_an_account') }} <a href="{{ route('register') }}">{{ __('messages.sign_up') }}</a>
+				</div>
+                </form>
+				<div id="forgot_pw">
+					<div class="form-group">
+						<label>Please confirm login email below</label>
+						<input type="email" class="form-control" name="email_forgot" id="email_forgot">
+						<i class="icon_mail_alt"></i>
+					</div>
+					<p>You will receive an email containing a link allowing you to reset your password to a new preferred one.</p>
+					<div class="text-center"><input type="submit" value="Reset Password" class="btn_1"></div>
+				</div>
+			</div>
+
+		<!--form -->
+	</div>
+	<!-- /Sign In2 Popup -->
 
 	<div id="toTop"></div><!-- Back to top button -->
 
